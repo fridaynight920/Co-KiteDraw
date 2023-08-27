@@ -13,7 +13,7 @@ namespace OpenCVForUnityExample
     {
         public int ImgWidth;  // 图片宽度
         public int ImgHeight;  // 图片高度
-        private string filePath = "Assets/ColorSet/Img";  // 文件路径
+        private string filePath;  // 文件路径
         private Texture2D imgTexture;  // 图片纹理
         private int imageCount = 0;  // 新图片数量
 
@@ -21,6 +21,9 @@ namespace OpenCVForUnityExample
         void Start()
         {
             Utils.setDebugMode(true);
+
+            // 设置文件路径为相对路径
+            filePath = Path.Combine(Application.dataPath, "ColorSet/Img");
         }
 
         // Update is called once per frame
@@ -45,7 +48,12 @@ namespace OpenCVForUnityExample
                 if (!imageName.StartsWith("Img_"))
                 {
                     newImageCount++;
-                    File.Delete(imagePath);
+
+                    // 获取新的文件名（避免重复）
+                    string newImagePath = Path.Combine(filePath, "Img_" + DateTime.Now.Ticks + ".png");
+
+                    // 重命名文件
+                    File.Move(imagePath, newImagePath);
                 }
             }
 
@@ -64,6 +72,7 @@ namespace OpenCVForUnityExample
             {
                 string[] imageFiles = Directory.GetFiles(filePath, "*.png");
                 int imgNum = 0;
+                Debug.Log("新图片为1个");
 
                 foreach (string imagePath in imageFiles)
                 {
