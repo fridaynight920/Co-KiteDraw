@@ -14,6 +14,7 @@ namespace OpenCVForUnityExample
         public int ImgWidth;  // 图片宽度
         public int ImgHeight;  // 图片高度
         private string filePath;  // 文件路径
+        private string filePathOut;  // 输出文件夹路径
         private Texture2D imgTexture;  // 图片纹理
         private int imageCount = 0;  // 新图片数量
 
@@ -23,7 +24,8 @@ namespace OpenCVForUnityExample
             Utils.setDebugMode(true);
 
             // 设置文件路径为相对路径
-            filePath = Path.Combine(Application.dataPath, "ColorSet/Img");
+            filePath = Path.Combine(Application.dataPath, "../Assets/ColorSet/Img");
+            filePathOut = Path.Combine(Application.dataPath, "../Assets/ColorSet/ImgOUT");  // 新的输出文件夹路径
         }
 
         // Update is called once per frame
@@ -83,7 +85,7 @@ namespace OpenCVForUnityExample
                         if (imgTexture != null)
                         {
                             Texture2D resizedTexture = ResizeTexture(imgTexture, ImgWidth, ImgHeight);
-                            string newImagePath = Path.Combine(filePath, "Img_" + imgNum + ".png");
+                            string newImagePath = Path.Combine(filePathOut, "Img_" + imgNum + ".png");  // 使用新的输出路径
                             SaveTextureToFile(resizedTexture, newImagePath);
                             imgNum++;
                         }
