@@ -58,7 +58,7 @@ public class move : MonoBehaviour
         {
             frequency[i] = Random.Range(0.5f, 2f);
             amplitude[i] = Random.Range(0.7f, 3f);
-            speed[i] = Random.Range(15f, 40f);
+            speed[i] = Random.Range(5f, 20f);
             
          //   Debug.Log("Random value for i = " + i + ": " + randomValues[i]);
           
