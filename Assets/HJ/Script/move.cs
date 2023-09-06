@@ -8,9 +8,14 @@ public class move : MonoBehaviour
 {
     private float[] frequency = new float[50]; 
     private float[] amplitude = new float[50]; 
-    private float[] speed = new float[50]; 
- // 随机选择的数值
-    
+    private float[] speed = new float[50];
+
+    public float[] MoveSpeed = new float[50];
+
+   // public float acceleration = 1f; // 加速度
+   // public float deceleration = 1f; // 减速度
+                                    // 随机选择的数值
+
     Vector3 CenterPosition = Vector3.zero; //圆心的位置，我设定在（0，0）点
     Vector3 r; //圆半径，也就是要旋转的向量。
     private GameObject[] tar;
@@ -23,20 +28,37 @@ public class move : MonoBehaviour
     {
         GenerateRandomValues();  // 初始化随机数数组
         
+
     }
 
     public void Update()
     {
+        for (int i = 0; i < 50; i++)
+        {
+            MoveSpeed[i] = speed[i];
+            while (MoveSpeed[i] < 50)
+            {
+                MoveSpeed[i]++;
+               
+    
+            }
+            while (MoveSpeed[i] > 50)
+            { MoveSpeed[i]--; }
 
-      
-        
-      tar = DynamicPrefabLoader.Target;
+            Debug.Log(MoveSpeed[i]);
+
+        }
+
+
+        tar = DynamicPrefabLoader.Target;
        
         for (int i = 0; i < tar.Length; i++)
         {
             m_transform = GameObject.FindGameObjectsWithTag("input")[i].GetComponent<Transform>();
             r = m_transform.position - CenterPosition;
-            r = Quaternion.AngleAxis(speed[i] * Time.deltaTime, Vector3.up) * r;
+
+            r = Quaternion.AngleAxis(MoveSpeed[i] * Time.deltaTime, Vector3.up) * r;
+
             m_transform.position = CenterPosition + r;
 
             float newY = Mathf.Sin(Time.time * frequency[i]) * amplitude[i];
