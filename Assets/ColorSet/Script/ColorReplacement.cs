@@ -13,42 +13,45 @@ public class ColorReplacement : MonoBehaviour
 
     private Texture2D outputTexture; // 输出的 Texture2D 对象
 
+
+
+
     private void Start()
     {
-        // 创建一个与 inputTexture 大小相同的 Mat 对象
-        Mat inputMat = new Mat(inputTexture.height, inputTexture.width, CvType.CV_8UC4);
-        Utils.texture2DToMat(inputTexture, inputMat);
+       // 创建一个与 inputTexture 大小相同的 Mat 对象
+       //Mat inputMat = new Mat(inputTexture.height, inputTexture.width, CvType.CV_8UC4);
+       // Utils.texture2DToMat(inputTexture, inputMat);
 
-        Mat outputMat = new Mat(inputMat.rows(), inputMat.cols(), CvType.CV_8UC4);
+       // Mat outputMat = new Mat(inputMat.rows(), inputMat.cols(), CvType.CV_8UC4);
 
-        // 其余的处理代码...
-        for (int y = 0; y < inputMat.rows(); y++)
-        {
-            for (int x = 0; x < inputMat.cols(); x++)
-            {
-                Color32 originalColor = new Color32(
-                    (byte)inputMat.get(y, x)[0],
-                    (byte)inputMat.get(y, x)[1],
-                    (byte)inputMat.get(y, x)[2],
-                    (byte)inputMat.get(y, x)[3]
-                );
+       // 其余的处理代码...
+       // for (int y = 0; y < inputMat.rows(); y++)
+       // {
+       //     for (int x = 0; x < inputMat.cols(); x++)
+       //     {
+       //         Color32 originalColor = new Color32(
+       //             (byte)inputMat.get(y, x)[0],
+       //             (byte)inputMat.get(y, x)[1],
+       //             (byte)inputMat.get(y, x)[2],
+       //             (byte)inputMat.get(y, x)[3]
+       //         );
 
-                int closestColorIndex = GetClosestColorIndex(originalColor, templateColors);
+       //         int closestColorIndex = GetClosestColorIndex(originalColor, templateColors);
 
-                Color32 replacedColor = finalColors[closestColorIndex];
-                Color32 outputColor = new Color32(replacedColor.r, replacedColor.g, replacedColor.b, 255);
+       //         Color32 replacedColor = finalColors[closestColorIndex];
+       //         Color32 outputColor = new Color32(replacedColor.r, replacedColor.g, replacedColor.b, 255);
 
-                double[] outputScalar = new double[] { outputColor.r, outputColor.g, outputColor.b, 255 };
-                outputMat.put(y, x, outputScalar);
-            }
-        }
+       //         double[] outputScalar = new double[] { outputColor.r, outputColor.g, outputColor.b, 255 };
+       //         outputMat.put(y, x, outputScalar);
+       //     }
+       // }
 
-        // 将 outputMat 转换为 Texture2D
-        outputTexture = new Texture2D(outputMat.cols(), outputMat.rows(), TextureFormat.RGBA32, false);
-        Utils.matToTexture2D(outputMat, outputTexture);
+       // 将 outputMat 转换为 Texture2D
+       // outputTexture = new Texture2D(outputMat.cols(), outputMat.rows(), TextureFormat.RGBA32, false);
+       // Utils.matToTexture2D(outputMat, outputTexture);
 
-        // 将 outputTexture 赋值给 RawImage
-        outputImage.texture = outputTexture;
+       // 将 outputTexture 赋值给 RawImage
+       // outputImage.texture = outputTexture;
     }
     private void Update()
     { 

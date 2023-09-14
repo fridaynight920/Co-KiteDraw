@@ -12,35 +12,42 @@ public class ImageToMaterialAndPrefabConverter : MonoBehaviour
     {
         // 获取输入文件夹下的所有图片文件
         string[] imageFilePaths = Directory.GetFiles(inputFolderPath, "*.png");
-
-        foreach (string imagePath in imageFilePaths)
+        if (imageFilePaths == null || imageFilePaths.Length == 0)
         {
-            // 获取图片文件名（不带扩展名）
-            string imageName = Path.GetFileNameWithoutExtension(imagePath);
-
-            // 检查预制体文件夹下是否已经存在同名的预制体
-            string prefabPath = Path.Combine(outputFolderPath, imageName + ".prefab");
-            if (!File.Exists(prefabPath))
+            // 当列表为空时不执行任何行为
+            return;
+        }
+        else
+        {
+            foreach (string imagePath in imageFilePaths)
             {
-                // 创建材质
-                Material material = new Material(Shader.Find("Unlit/Texture"));
+                // 获取图片文件名（不带扩展名）
+                string imageName = Path.GetFileNameWithoutExtension(imagePath);
 
-                // 加载纹理
-                Texture2D texture = new Texture2D(2048, 2048);
-                byte[] imageBytes = File.ReadAllBytes(imagePath);
-                texture.LoadImage(imageBytes);
+                // 检查预制体文件夹下是否已经存在同名的预制体
+                string prefabPath = Path.Combine(outputFolderPath, imageName + ".prefab");
+                if (!File.Exists(prefabPath))
+                {
+                    // 创建材质
+                    Material material = new Material(Shader.Find("Unlit/Texture"));
 
-                // 将纹理赋值给材质
-                material.mainTexture = texture;
+                    // 加载纹理
+                    Texture2D texture = new Texture2D(2048, 2048);
+                    byte[] imageBytes = File.ReadAllBytes(imagePath);
+                    texture.LoadImage(imageBytes);
 
-                // 创建预制体
-                GameObject prefab = PrefabUtility.SaveAsPrefabAsset(fbxModel, prefabPath);
-                Renderer prefabRenderer = prefab.GetComponent<Renderer>();
+                    // 将纹理赋值给材质
+                    material.mainTexture = texture;
 
-                // 更新预制体的材质
-                prefabRenderer.sharedMaterial = material;
+                    // 创建预制体
+                    GameObject prefab = PrefabUtility.SaveAsPrefabAsset(fbxModel, prefabPath);
+                    Renderer prefabRenderer = prefab.GetComponent<Renderer>();
 
-                Debug.Log("New prefab created: " + imageName);
+                    // 更新预制体的材质
+                    prefabRenderer.sharedMaterial = material;
+
+                    Debug.Log("New prefab created: " + imageName);
+                }
             }
         }
 

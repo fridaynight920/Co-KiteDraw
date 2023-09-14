@@ -6,6 +6,7 @@ using UnityEngine;
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.ImgprocModule;
 using OpenCVForUnity.UnityUtils;
+using UnityEditor;
 
 namespace OpenCVForUnityExample
 {
@@ -13,8 +14,8 @@ namespace OpenCVForUnityExample
     {
         public int ImgWidth;  // 图片宽度
         public int ImgHeight;  // 图片高度
-        private string filePath;  // 文件路径
-        private string filePathOut;  // 输出文件夹路径
+        public string filePath;  // 文件路径
+        public string filePathOut;  // 输出文件夹路径
         private Texture2D imgTexture;  // 图片纹理
         private int imageCount = 0;  // 新图片数量
 
@@ -23,19 +24,19 @@ namespace OpenCVForUnityExample
         {
             Utils.setDebugMode(true);
 
-            // 设置文件路径为相对路径
-            filePath = Path.Combine(Application.dataPath, "../Assets/ColorSet/Img");
-            filePathOut = Path.Combine(Application.dataPath, "../Assets/ColorSet/ImgOUT");  // 新的输出文件夹路径
+            //// 设置文件路径为相对路径
+            //filePath = Path.Combine(Application.dataPath, "../Assets/ColorSet/Img");
+            //filePathOut = Path.Combine(Application.dataPath, "../Assets/ColorSet/ImgOut");  // 新的输出文件夹路径
         }
 
         // Update is called once per frame
         void Update()
         {
-            if (Input.GetKeyDown(KeyCode.Q))
-            {
+           
                 FindImage();
                 HandleImage();
-            }
+            
+            
         }
 
         // 查找图片
