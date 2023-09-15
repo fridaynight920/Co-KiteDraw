@@ -308,6 +308,93 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: -2.023, y: -8.839, z: 48.611}
+--- !u!1 &1040740044
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1040740048}
+  - component: {fileID: 1040740047}
+  - component: {fileID: 1040740046}
+  m_Layer: 0
+  m_Name: PaintingToImg
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1040740046
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1040740044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9dd08edd84f1afd4c8b380b6fb974592, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  imageFolderPath: Assets/ColorSet/ImgOut
+  processedFolderPath: Assets/ColorSet/ImgFinal
+  checkInterval: 2
+  inputTexture: {fileID: 0}
+  templateColors:
+  - serializedVersion: 2
+    rgba: 9928658
+  - serializedVersion: 2
+    rgba: 16777215
+  - serializedVersion: 2
+    rgba: 12488585
+  - serializedVersion: 2
+    rgba: 9026750
+  - serializedVersion: 2
+    rgba: 10010249
+  finalColors:
+  - serializedVersion: 2
+    rgba: 6765524
+  - serializedVersion: 2
+    rgba: 16777215
+  - serializedVersion: 2
+    rgba: 13391688
+  - serializedVersion: 2
+    rgba: 4507596
+  - serializedVersion: 2
+    rgba: 6082862
+--- !u!114 &1040740047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1040740044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 498770f9962ca594d8486b2f9b6a1cc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ImgWidth: 512
+  ImgHeight: 512
+  filePath: Assets/ColorSet/Img
+  filePathOut: Assets/ColorSet/ImgOut
+--- !u!4 &1040740048
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1040740044}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.99172086, y: 0.998868, z: 0.20252329}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1177030086
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -562,6 +649,82 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c19f108c0c0722d4c992995a236d4629, type: 3}
+--- !u!1 &1352167187
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1352167193}
+  - component: {fileID: 1352167192}
+  - component: {fileID: 1352167191}
+  - component: {fileID: 1352167190}
+  m_Layer: 0
+  m_Name: ImgToMove
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1352167190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1352167187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbdc9e044c5f919468fde942372a5ebf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1352167191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1352167187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f8505a0ff6cac2448bc076455d5c10f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabFolderPath: Prefabs
+  loadInterval: 2
+  positon: {x: 0, y: 0, z: 0}
+--- !u!114 &1352167192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1352167187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e69b57b0952b7b84eb33b20c9a26ed2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inputFolderPath: Assets/ColorSet/ImgFinal
+  outputFolderPath: Assets/HJ/Resources/Prefabs
+  fbxModel: {fileID: 919132149155446097, guid: 6e041fc801c74054d9415f6897aef3a1, type: 3}
+--- !u!4 &1352167193
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1352167187}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 142.72975, y: -6.3434825, z: 516.4765}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1691517570
 GameObject:
   m_ObjectHideFlags: 0
@@ -664,3 +827,5 @@ SceneRoots:
   - {fileID: 1236090784}
   - {fileID: 553845211}
   - {fileID: 1177030086}
+  - {fileID: 1040740048}
+  - {fileID: 1352167193}

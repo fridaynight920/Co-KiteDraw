@@ -85,7 +85,7 @@ Material:
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _Tilling: 1
-    - _TimeSpeed: 0.05
+    - _TimeSpeed: 0.02
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
