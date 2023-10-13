@@ -12,6 +12,7 @@ namespace OpenCVForUnityExample
 {
     public class ImagIN : MonoBehaviour
     {
+       
         public int ImgWidth;  // 图片宽度
         public int ImgHeight;  // 图片高度
         public string filePath;  // 文件路径
@@ -20,6 +21,10 @@ namespace OpenCVForUnityExample
         private int imageCount = 0;  // 新图片数量
 
         // Start is called before the first frame update
+
+        public string folderPath; // 指定文件夹路径
+
+
         void Start()
         {
             Utils.setDebugMode(true);
@@ -35,8 +40,11 @@ namespace OpenCVForUnityExample
            
                 FindImage();
                 HandleImage();
-            
-            
+
+           
+
+
+
         }
 
         // 查找图片
@@ -128,6 +136,41 @@ namespace OpenCVForUnityExample
         {
             byte[] bytes = texture.EncodeToPNG();
             File.WriteAllBytes(filePath, bytes);
+        }
+
+
+
+        //////////////////////////////////////////////////
+        /// <summary>
+        /// 
+        /// </summary>
+        /// 
+
+
+        private void OnApplicationQuit()
+        {
+            DestroyFilesInFolder(folderPath);
+        }
+
+        private void DestroyFilesInFolder(string folderPath)
+        {
+            if (Directory.Exists(folderPath))
+            {
+                DirectoryInfo directory = new DirectoryInfo(folderPath);
+                FileInfo[] files = directory.GetFiles();
+
+                foreach (var file in files)
+                {
+                    file.Delete();
+                    
+                }
+
+                Debug.Log("文件夹下的所有文件已销毁：" + folderPath);
+            }
+            else
+            {
+                Debug.LogWarning("文件夹不存在：" + folderPath);
+            }
         }
     }
 }

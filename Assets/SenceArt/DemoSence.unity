@@ -338,32 +338,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dd08edd84f1afd4c8b380b6fb974592, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  imageFolderPath: Assets/ColorSet/ImgOut
-  processedFolderPath: Assets/ColorSet/ImgFinal
-  checkInterval: 2
+  imageFolderPath: Assets/SenceArt/Auto-Path/ImgOut
+  processedFolderPath: Assets/SenceArt/Auto-Path/ImgFinal
+  checkInterval: 10
+  folderPath: Assets/SenceArt/Auto-Path/ImgFinal
   inputTexture: {fileID: 0}
   templateColors:
   - serializedVersion: 2
-    rgba: 9928658
+    rgba: 60671
   - serializedVersion: 2
-    rgba: 16777215
+    rgba: 0
   - serializedVersion: 2
-    rgba: 12488585
+    rgba: 6630868
   - serializedVersion: 2
-    rgba: 9026750
+    rgba: 13736387
   - serializedVersion: 2
-    rgba: 10010249
+    rgba: 4962128
+  - serializedVersion: 2
+    rgba: 2234609
+  - serializedVersion: 2
+    rgba: 14738030
   finalColors:
   - serializedVersion: 2
-    rgba: 6765524
+    rgba: 7864318
   - serializedVersion: 2
-    rgba: 16777215
+    rgba: 3942697
   - serializedVersion: 2
-    rgba: 13391688
+    rgba: 6049501
   - serializedVersion: 2
-    rgba: 4507596
+    rgba: 16763358
   - serializedVersion: 2
-    rgba: 6082862
+    rgba: 10157940
+  - serializedVersion: 2
+    rgba: 2235546
+  - serializedVersion: 2
+    rgba: 16771507
 --- !u!114 &1040740047
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -378,8 +387,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ImgWidth: 512
   ImgHeight: 512
-  filePath: Assets/ColorSet/Img
-  filePathOut: Assets/ColorSet/ImgOut
+  filePath: Assets/SenceArt/Auto-Path/Img
+  filePathOut: Assets/SenceArt/Auto-Path/ImgOut
+  folderPath: Assets/SenceArt/Auto-Path/ImgOut
 --- !u!4 &1040740048
 Transform:
   m_ObjectHideFlags: 0
@@ -680,6 +690,59 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbdc9e044c5f919468fde942372a5ebf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  folderPath: 
+  intervalTime: 2
+  currentSpeed:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
 --- !u!114 &1352167191
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -693,7 +756,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefabFolderPath: Prefabs
-  loadInterval: 2
+  loadInterval: 10
   positon: {x: 0, y: 0, z: 0}
 --- !u!114 &1352167192
 MonoBehaviour:
@@ -707,9 +770,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e69b57b0952b7b84eb33b20c9a26ed2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputFolderPath: Assets/ColorSet/ImgFinal
-  outputFolderPath: Assets/HJ/Resources/Prefabs
+  inputFolderPath: Assets/SenceArt/Auto-Path/ImgFinal
+  outputFolderPath: Assets/SenceArt/Auto-Path/Resources/Prefabs
   fbxModel: {fileID: 919132149155446097, guid: 6e041fc801c74054d9415f6897aef3a1, type: 3}
+  folderPath: Assets/SenceArt/Auto-Path/Resources/Prefabs
 --- !u!4 &1352167193
 Transform:
   m_ObjectHideFlags: 0
@@ -784,10 +848,10 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
+  field of view: 49
   orthographic: 0
   orthographic size: 5
-  m_Depth: -1
+  m_Depth: -0.94
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -810,13 +874,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1691517570}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalRotation: {x: 0.05759279, y: -0.00026117993, z: -0.000017721428, w: 0.99834013}
+  m_LocalPosition: {x: 1.51, y: 2.78, z: -10.36}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 6.603, y: -0.03, z: -0.004}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

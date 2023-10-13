@@ -4,10 +4,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using Object = UnityEngine.Object;
 using Random = UnityEngine.Random;
+using System.IO;
 
 public class DynamicPrefabLoader : MonoBehaviour
 {
     
+
+
     public string prefabFolderPath; // 预制体所在的文件夹路径
     public float loadInterval = 1f; // 加载间隔时间
     private Dictionary<Object, GameObject> instantiatedPrefabs = new Dictionary<Object, GameObject>(); // 已实例化的预制体字典
@@ -22,9 +25,9 @@ public class DynamicPrefabLoader : MonoBehaviour
     public void Update()
     {
         positon = transform.position;
-        positon.x = Random.Range(4.27f, -1.3f);
-        positon.y = Random.Range(4.27f, -1.3f);
-        positon.z = Random.Range(4.27f, -10f);
+        positon.x = Random.Range(3.27f, 5f);
+        positon.y = Random.Range(-2f, 2f);
+        positon.z = Random.Range(3.27f, 5f);
         
         Target = GameObject.FindGameObjectsWithTag("input");
         //Debug.Log(target.Length);
@@ -42,7 +45,8 @@ public class DynamicPrefabLoader : MonoBehaviour
             {
                 if (!IsAlreadyInstantiated(prefabFile))
                 {
-                    GameObject loadedPrefab = Instantiate(prefabFile as GameObject,positon,Quaternion.identity);
+                    Quaternion rot = Quaternion.Euler(70f, 0f, 0f);
+                    GameObject loadedPrefab = Instantiate(prefabFile as GameObject,positon,rot);
                     SetGameObjectTag(loadedPrefab , "input");
                     instantiatedPrefabs.Add(prefabFile, loadedPrefab);
                     // 在这里可以对预制体进行其他逻辑操作
@@ -69,5 +73,11 @@ public class DynamicPrefabLoader : MonoBehaviour
         gameObject.tag = tag;
         
     }
+
+
+    /// <summary>
+    /// /////
+    /// </summary>
+   
 }
 

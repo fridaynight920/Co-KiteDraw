@@ -8,6 +8,9 @@ public class ImageToMaterialAndPrefabConverter : MonoBehaviour
     [SerializeField] private string outputFolderPath; // 输出预制体文件夹路径
     [SerializeField] private GameObject fbxModel; // FBX模型
 
+
+    public string folderPath; // 指定文件夹路径
+
     void Update()
     {
         // 获取输入文件夹下的所有图片文件
@@ -46,13 +49,48 @@ public class ImageToMaterialAndPrefabConverter : MonoBehaviour
                     // 更新预制体的材质
                     prefabRenderer.sharedMaterial = material;
 
+                    
                     Debug.Log("New prefab created: " + imageName);
+
+                    
+
+
+
                 }
             }
         }
 
         // 刷新AssetDatabase，确保新创建的预制体在Unity编辑器中可见
         AssetDatabase.Refresh();
+    }
+
+    /// <summary>
+    /// /////
+    /// </summary>
+    private void OnApplicationQuit()
+    {
+        DestroyFilesInFolder(folderPath);
+    }
+
+    private void DestroyFilesInFolder(string folderPath)
+    {
+        if (Directory.Exists(folderPath))
+        {
+            DirectoryInfo directory = new DirectoryInfo(folderPath);
+            FileInfo[] files = directory.GetFiles();
+
+            foreach (var file in files)
+            {
+                file.Delete();
+
+            }
+
+            Debug.Log("文件夹下的所有文件已销毁：" + folderPath);
+        }
+        else
+        {
+            Debug.LogWarning("文件夹不存在：" + folderPath);
+        }
     }
 }
 

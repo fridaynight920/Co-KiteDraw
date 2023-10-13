@@ -13,6 +13,8 @@ public class Processor : MonoBehaviour
     private DirectoryInfo dirInfo;
 
 
+    public string folderPath; // 指定文件夹路径
+
 
     public Texture2D inputTexture; // 输入的 Texture2D 对象
    // public RawImage outputImage; // 用于显示输出的 RawImage
@@ -148,6 +150,35 @@ public class Processor : MonoBehaviour
         Texture2D texture = new Texture2D(2, 2);
         texture.LoadImage(imageBytes);
         return texture;
+    }
+
+    /// <summary>
+    //停止运行销毁
+    /// </summary>
+    private void OnApplicationQuit()
+    {
+        DestroyFilesInFolder(folderPath);
+    }
+
+    private void DestroyFilesInFolder(string folderPath)
+    {
+        if (Directory.Exists(folderPath))
+        {
+            DirectoryInfo directory = new DirectoryInfo(folderPath);
+            FileInfo[] files = directory.GetFiles();
+
+            foreach (var file in files)
+            {
+                file.Delete();
+
+            }
+
+            Debug.Log("文件夹下的所有文件已销毁：" + folderPath);
+        }
+        else
+        {
+            Debug.LogWarning("文件夹不存在：" + folderPath);
+        }
     }
 }
 
