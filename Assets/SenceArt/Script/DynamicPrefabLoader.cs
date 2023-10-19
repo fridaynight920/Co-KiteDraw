@@ -1,10 +1,9 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Object = UnityEngine.Object;
 using Random = UnityEngine.Random;
-using System.IO;
+
 
 public class DynamicPrefabLoader : MonoBehaviour
 {
@@ -25,9 +24,9 @@ public class DynamicPrefabLoader : MonoBehaviour
     public void Update()
     {
         positon = transform.position;
-        positon.x = Random.Range(3.27f, 5f);
-        positon.y = Random.Range(-2f, 2f);
-        positon.z = Random.Range(3.27f, 5f);
+        positon.x = Random.Range(-20f, 20f);
+        positon.y = Random.Range(2f, 4f);
+        positon.z = Random.Range(6f, 40f);
         
         Target = GameObject.FindGameObjectsWithTag("input");
         //Debug.Log(target.Length);

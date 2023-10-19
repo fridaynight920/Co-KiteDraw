@@ -46,6 +46,11 @@ public class ImageToMaterialAndPrefabConverter : MonoBehaviour
                     GameObject prefab = PrefabUtility.SaveAsPrefabAsset(fbxModel, prefabPath);
                     Renderer prefabRenderer = prefab.GetComponent<Renderer>();
 
+                    //缩放
+                    Vector3 ini = prefab.transform.localScale;
+                    Vector3 news = ini * 3;
+                    prefab.transform.localScale = news;
+
                     // 更新预制体的材质
                     prefabRenderer.sharedMaterial = material;
 

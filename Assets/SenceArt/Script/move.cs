@@ -14,7 +14,7 @@ public class move : MonoBehaviour
     private float[] speed = new float[50]; 
     // 随机选择的数值
     
-    Vector3 CenterPosition = Vector3.zero; 
+    Vector3 CenterPosition = new Vector3(0,2,24); 
     //圆心的位置，我设定在（0，0）点
     Vector3 r; 
     //圆半径，也就是要旋转的向量。
@@ -126,11 +126,11 @@ public class move : MonoBehaviour
     {
         for (int i = 0; i < 50;  i++)
         {
-            frequency[i] = Random.Range(0.3f, 1f);
-            amplitude[i] = Random.Range(0.4f, 3f);
+            frequency[i] = Random.Range(0.6f, 1.5f);
+            amplitude[i] = Random.Range(1f, 3f);
 
-            minSpeed[i] = Random.Range(10f, 30f);
-            maxSpeed[i] = Random.Range(45f, 80f);
+            minSpeed[i] = Random.Range(0f, 30f);
+            maxSpeed[i] = Random.Range(45f, 60f);
             currentSpeed[i] = minSpeed[i];
 
            
