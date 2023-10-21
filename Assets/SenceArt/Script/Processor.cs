@@ -1,6 +1,7 @@
-using System.Collections;
+using UnityEditor;
 using System.IO;
 using UnityEngine;
+
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UnityUtils;
 
@@ -8,7 +9,7 @@ public class Processor : MonoBehaviour
 {
     public string imageFolderPath; // 图片文件夹路径
     public string processedFolderPath; // 处理后图片保存的文件夹路径
-    public float checkInterval = 60f; // 监测间隔时间，单位为秒
+   public float checkInterval = 60f; // 监测间隔时间，单位为秒
 
     private DirectoryInfo dirInfo;
 
@@ -24,44 +25,94 @@ public class Processor : MonoBehaviour
 
     private Texture2D outputTexture; // 输出的 Texture2D 对象
 
+    //void Start()
+    //{
+    //    StartCoroutine(CheckForNewImages());
+    //}
+
+
+    //IEnumerator CheckForNewImages()
+
+    //{
+    //    while (true)
+    //    {
+    //        if (!Directory.Exists(imageFolderPath))
+    //        {
+    //            Debug.LogWarning("Image folder path is not exist: " + imageFolderPath);
+    //            yield return new WaitForSeconds(checkInterval);
+    //            continue;
+    //        }
+
+    //        if (dirInfo == null)
+    //        {
+    //            dirInfo = new DirectoryInfo(imageFolderPath);
+    //        }
+
+    //        FileInfo[] imageFiles = dirInfo.GetFiles("*.png", SearchOption.TopDirectoryOnly);
+
+    //        foreach (FileInfo imageFile in imageFiles)
+    //        {
+    //            string processedFilePath = Path.Combine(processedFolderPath, imageFile.Name);
+
+
+    //            Texture2D processedTexture = ProcessImage(imageFile.FullName);
+
+
+    //            byte[] bytes = processedTexture.EncodeToPNG();
+    //            File.WriteAllBytes(processedFilePath, bytes);
+
+    //            Debug.Log("Processed and saved image: " + processedFilePath);
+    //        }
+
+    //        yield return new WaitForSeconds(checkInterval);
+    //    }
+    //}
     void Start()
     {
-        StartCoroutine(CheckForNewImages());
+        if (!Directory.Exists(processedFolderPath))
+        {
+            Directory.CreateDirectory(processedFolderPath);
+        }
+
+        dirInfo = new DirectoryInfo(imageFolderPath);
     }
 
-    IEnumerator CheckForNewImages()
+    void Update()
     {
-        while (true)
+        if (!Directory.Exists(imageFolderPath))
         {
-            if (!Directory.Exists(imageFolderPath))
-            {
-                Debug.LogWarning("Image folder path is not exist: " + imageFolderPath);
-                yield return new WaitForSeconds(checkInterval);
+            Debug.LogWarning("Image folder path is not exist: " + imageFolderPath);
+            return;
+        }
+
+        if (dirInfo == null)
+        {
+            dirInfo = new DirectoryInfo(imageFolderPath);
+        }
+
+        FileInfo[] imageFiles = dirInfo.GetFiles("*.png", SearchOption.TopDirectoryOnly);
+
+        foreach (FileInfo imageFile in imageFiles)
+        {
+            string processedFilePath = Path.Combine(processedFolderPath, imageFile.Name);
+
+            // 如果已经保存过该文件，则跳过
+            if (File.Exists(processedFilePath))
                 continue;
-            }
 
-            if (dirInfo == null)
-            {
-                dirInfo = new DirectoryInfo(imageFolderPath);
-            }
+            // 加载和处理纹理
+            Texture2D processedTexture = ProcessImage(imageFile.FullName);
 
-            FileInfo[] imageFiles = dirInfo.GetFiles("*.png", SearchOption.TopDirectoryOnly);
+            // 保存处理后的图片
+            byte[] bytes = processedTexture.EncodeToPNG();
+            File.WriteAllBytes(processedFilePath, bytes);
 
-            foreach (FileInfo imageFile in imageFiles)
-            {
-                string processedFilePath = Path.Combine(processedFolderPath, imageFile.Name);
+            Debug.Log("Processed and saved image: " + processedFilePath);
+            // 更新 AssetDatabase
+            AssetDatabase.Refresh();
 
-                // 处理图片
-                Texture2D processedTexture = ProcessImage(imageFile.FullName);
-
-                // 保存处理后的图片
-                byte[] bytes = processedTexture.EncodeToPNG();
-                File.WriteAllBytes(processedFilePath, bytes);
-
-                Debug.Log("Processed and saved image: " + processedFilePath);
-            }
-
-            yield return new WaitForSeconds(checkInterval);
+            // 您的代码逻辑
+            // ...
         }
     }
 

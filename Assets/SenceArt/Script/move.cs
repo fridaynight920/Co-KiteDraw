@@ -7,7 +7,7 @@ using System.IO;
 
 public class move : MonoBehaviour
 {
-    public string folderPath; // 指定文件夹路径
+  //  public string folderPath; // 指定文件夹路径
 
     private float[] frequency = new float[50]; 
     private float[] amplitude = new float[50]; 
@@ -28,7 +28,7 @@ public class move : MonoBehaviour
     //private float minSpeed= 10f;
     //private float maxSpeed= 50f;
     //public float currentSpeed;
-    public float intervalTime = 0.5f; // 时间间隔
+    private float intervalTime = 0.1f; // 时间间隔
     private float timer; // 计时器
     private bool isIncreasing; // 是否正在增加速度
 
@@ -142,31 +142,31 @@ public class move : MonoBehaviour
     /// <summary>
     /// /////
     /// </summary>
-    private void OnApplicationQuit()
-    {
-        DestroyFilesInFolder(folderPath);
-    }
+    //private void OnApplicationQuit()
+    //{
+    //    DestroyFilesInFolder(folderPath);
+    //}
 
-    private void DestroyFilesInFolder(string folderPath)
-    {
-        if (Directory.Exists(folderPath))
-        {
-            DirectoryInfo directory = new DirectoryInfo(folderPath);
-            FileInfo[] files = directory.GetFiles();
+    //private void DestroyFilesInFolder(string folderPath)
+    //{
+    //    if (Directory.Exists(folderPath))
+    //    {
+    //        DirectoryInfo directory = new DirectoryInfo(folderPath);
+    //        FileInfo[] files = directory.GetFiles();
 
-            foreach (var file in files)
-            {
-                file.Delete();
+    //        foreach (var file in files)
+    //        {
+    //            file.Delete();
 
-            }
+    //        }
 
-            Debug.Log("文件夹下的所有文件已销毁：" + folderPath);
-        }
-        else
-        {
-            Debug.LogWarning("文件夹不存在：" + folderPath);
-        }
-    }
+    //        Debug.Log("文件夹下的所有文件已销毁：" + folderPath);
+    //    }
+    //    else
+    //    {
+    //        Debug.LogWarning("文件夹不存在：" + folderPath);
+    //    }
+    //}
 
 
 }

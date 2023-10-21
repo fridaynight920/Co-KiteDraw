@@ -1,12 +1,9 @@
+using UnityEditor;
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
-using OpenCVForUnity.CoreModule;
-using OpenCVForUnity.ImgprocModule;
 using OpenCVForUnity.UnityUtils;
-using UnityEditor;
+
 
 namespace OpenCVForUnityExample
 {
@@ -41,7 +38,11 @@ namespace OpenCVForUnityExample
                 FindImage();
                 HandleImage();
 
+            // 更新 AssetDatabase
+            AssetDatabase.Refresh();
+
            
+
 
 
 

@@ -443,9 +443,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dd08edd84f1afd4c8b380b6fb974592, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  imageFolderPath: Assets/SenceArt/Auto-Path/ImgOut
+  imageFolderPath: Assets/SenceArt/Auto-Path/Resources/ImgOut
   processedFolderPath: Assets/SenceArt/Auto-Path/ImgFinal
-  checkInterval: 10
+  checkInterval: 3
   folderPath: Assets/SenceArt/Auto-Path/ImgFinal
   inputTexture: {fileID: 0}
   templateColors:
@@ -493,8 +493,8 @@ MonoBehaviour:
   ImgWidth: 512
   ImgHeight: 512
   filePath: Assets/SenceArt/Auto-Path/Img
-  filePathOut: Assets/SenceArt/Auto-Path/ImgOut
-  folderPath: Assets/SenceArt/Auto-Path/ImgOut
+  filePathOut: Assets/SenceArt/Auto-Path/Resources/ImgOut
+  folderPath: Assets/SenceArt/Auto-Path/Resources/ImgOut
 --- !u!4 &1040740048
 Transform:
   m_ObjectHideFlags: 0
@@ -815,8 +815,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbdc9e044c5f919468fde942372a5ebf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  folderPath: 
-  intervalTime: 2
   currentSpeed:
   - 0
   - 0
@@ -881,7 +879,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefabFolderPath: Prefabs
-  loadInterval: 10
+  loadInterval: 2
   positon: {x: 0, y: 0, z: 0}
 --- !u!114 &1352167192
 MonoBehaviour:
