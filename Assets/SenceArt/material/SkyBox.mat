@@ -34,13 +34,13 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _DirectionPitch: 128
-    - _DirectionYaw: 13
-    - _Exponent: 0.42
-    - _Intensity: 1.28
+    - _DirectionPitch: 1
+    - _DirectionYaw: 1
+    - _Exponent: 1
+    - _Intensity: 1
     m_Colors:
     - _Color: {r: 0.654902, g: 0.7019608, b: 0.6117647, a: 1}
-    - _Color1: {r: 1, g: 1, b: 1, a: 1}
-    - _Color2: {r: 0.66800004, g: 0.6251795, b: 0, a: 1}
-    - _Direction: {r: 0.17726384, g: -0.61566144, b: 0.7678141, a: 0}
+    - _Color1: {r: 0.6666667, g: 0.654902, b: 0.63529414, a: 1}
+    - _Color2: {r: 0.8470589, g: 0.78823537, b: 0.7058824, a: 1}
+    - _Direction: {r: 0.00030458646, g: 0.9998477, b: 0.017449748, a: 0}
   m_BuildTextureStacks: []
